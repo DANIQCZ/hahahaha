@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Získej Mince</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <button class="icon-btn" id="backBtn" aria-label="Zpět">←</button>
+      <h1 class="title">Získej Mince</h1>
+      <button class="icon-btn" id="historyBtn" aria-label="Historie">⎘</button>
+    </header>
+
+    <main class="content">
+      <!-- Zůstatek -->
+      <section class="card balance-card">
+        <div class="balance-row">
+          <div class="label">Zůstatek mincí</div>
+          <div class="spacer"></div>
+        </div>
+        <div class="balance-value">
+          <span class="coin">🪙</span>
+          <span id="balanceAmount">0</span>
+        </div>
+      </section>
+
+      <!-- Dobít section heading (visual only) -->
+      <div class="section-heading">Dobít</div>
+
+      <!-- Grid s balíčky mincí -->
+      <section class="card packages-card">
+        <div class="grid" id="packagesGrid">
+          <!-- Dynamicky vyplní skript -->
+        </div>
+        <div class="foot-note">
+          Zkus dobíjet na <a target="_blank" rel="noopener" href="https://www.tiktok.com/coin">tiktok.com/coin</a> a ušetři 25 %.
+        </div>
+        <a target="_blank" rel="noopener" href="https://www.tiktok.com/coin" class="try-link">Vyzkoušet ›</a>
+      </section>
+
+      <!-- Poslat někomu jinému -->
+      <section class="card send-card">
+        <div class="send-row">
+          <div class="send-title">Poslat někomu jinému</div>
+        </div>
+        <label class="input-label" for="recipientInput">Uživatelské jméno (username)</label>
+        <input id="recipientInput" class="text-input" type="text" placeholder="např. @uzivatel" />
+        <div class="hint">Neoficiální ukázka – pouze simulace, žádné skutečné platby.</div>
+      </section>
+    </main>
+
+    <!-- Spodní tlačítko Dobít -->
+    <div class="bottom-bar">
+      <button id="topupBtn" class="primary-btn" disabled>Dobít</button>
+    </div>
+  </div>
+
+  <!-- Modal: potvrzení + odpočet -->
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content" role="document">
+      <div class="modal-header">
+        <div class="modal-title">Posláno</div>
+      </div>
+      <div class="modal-body">
+        <div id="modalRecipient" class="modal-row"></div>
+        <div class="modal-row">Bude obdrženo do 5 minut.</div>
+        <div class="countdown" id="countdown">05:00</div>
+      </div>
+      <div class="modal-footer">
+        <button id="closeModalBtn" class="secondary-btn">Zavřít</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
