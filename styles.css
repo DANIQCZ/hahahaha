@@ -1,0 +1,118 @@
+* { box-sizing: border-box; }
+:root {
+  --bg: #f6f6f7;
+  --card: #ffffff;
+  --muted: #60646c;
+  --text: #111318;
+  --accent: #ef4452; /* red highlight */
+  --accent-bg: #fdecee;
+  --tile: #f1f2f5;
+  --tile-border: #e6e7eb;
+  --shadow: 0 2px 12px rgba(17, 19, 24, 0.06);
+}
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: 48px 1fr 48px;
+  align-items: center;
+  padding: 12px 16px;
+  background: var(--card);
+  box-shadow: var(--shadow);
+}
+.app-header h1 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+}
+.icon-button { background: none; border: none; font-size: 22px; cursor: pointer; }
+.placeholder { width: 24px; height: 24px; }
+
+.app-content { padding: 12px; }
+.card {
+  background: var(--card);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  padding: 16px;
+  margin-bottom: 12px;
+}
+.balance-card .muted { margin: 0; }
+.balance-value { display: flex; align-items: center; gap: 8px; font-size: 34px; font-weight: 800; }
+.coin-icon { font-size: 28px; }
+.muted { color: var(--muted); font-size: 14px; }
+.section-card { padding-top: 8px; }
+.section-title { font-size: 16px; margin: 8px 0 12px; font-weight: 700; }
+
+.bundle-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.bundle-tile {
+  background: var(--tile);
+  border: 2px solid var(--tile-border);
+  border-radius: 14px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.bundle-tile:hover { border-color: #d0d2d9; }
+.bundle-tile.selected {
+  border-color: var(--accent);
+  background: var(--accent-bg);
+}
+.bundle-top { display: flex; align-items: center; gap: 8px; font-weight: 700; }
+.bundle-top .coin { width: 22px; height: 22px; border-radius: 50%; background: linear-gradient(180deg, #ffd54d, #f6b73c); border: 1px solid #e09a28; }
+.bundle-amount { font-size: 16px; }
+.bundle-price { font-size: 13px; color: var(--muted); }
+
+.custom-panel { margin-top: 8px; }
+.custom-panel.hidden { display: none; }
+.custom-label { display: block; margin-bottom: 6px; font-weight: 600; }
+.custom-input-row { display: flex; gap: 8px; }
+.custom-input-row input { flex: 1; padding: 10px 12px; border-radius: 10px; border: 1px solid #d9dbe1; font-size: 16px; }
+
+.username-row { display: flex; align-items: center; gap: 6px; margin-top: 6px; }
+.username-row .at { background: #e9eaf0; border: 1px solid #d9dbe1; padding: 10px 12px; border-radius: 10px; }
+.username-row input { flex: 1; padding: 10px 12px; border-radius: 10px; border: 1px solid #d9dbe1; font-size: 16px; }
+.helper-text { color: var(--muted); font-size: 12px; margin-top: 6px; }
+
+.save-note { color: var(--muted); font-size: 12px; margin-top: 12px; }
+
+.footer { position: sticky; bottom: 0; background: rgba(246,246,247,0.8); backdrop-filter: blur(8px); padding: 12px; }
+.primary-button, .secondary-button {
+  appearance: none; border: none; border-radius: 12px; padding: 14px 16px; font-weight: 700; font-size: 16px; cursor: pointer;
+}
+.primary-button { width: 100%; background: #ff2d55; color: white; box-shadow: 0 6px 14px rgba(255, 45, 85, 0.35); }
+.primary-button:disabled { background: #f1a7b5; cursor: not-allowed; box-shadow: none; }
+.secondary-button { background: #ededf1; color: #0f1117; }
+.secondary-button.full { width: 100%; }
+
+.send-card { background: #ededf3; }
+
+.spacer { height: 64px; }
+
+.modal.hidden { display: none; }
+.modal { position: fixed; inset: 0; display: grid; place-items: center; }
+.modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.35); }
+.modal-content { position: relative; background: var(--card); padding: 20px; border-radius: 16px; width: min(420px, calc(100% - 32px)); box-shadow: var(--shadow); text-align: center; }
+.modal-content h3 { margin: 0 0 8px; font-size: 20px; }
+.modal-content p { margin: 0 0 12px; color: var(--muted); }
+.countdown { font-size: 28px; font-weight: 800; margin: 8px 0 16px; }
+
+@media (max-width: 380px) {
+  .bundle-grid { grid-template-columns: repeat(2, 1fr); }
+}

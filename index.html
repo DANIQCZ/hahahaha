@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Získej Mince</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <button class="icon-button" aria-label="Zpět" title="Zpět" onclick="history.back()">←</button>
+      <h1>Získej Mince</h1>
+      <div class="placeholder"></div>
+    </header>
+
+    <main class="app-content">
+      <section class="card balance-card">
+        <div class="balance-top">
+          <p class="muted">Zůstatek mincí</p>
+        </div>
+        <div class="balance-value">
+          <span class="coin-icon" aria-hidden="true">🪙</span>
+          <span id="balanceCoins">0</span>
+        </div>
+      </section>
+
+      <section class="card section-card">
+        <h2 class="section-title">Dobít</h2>
+        <div id="bundleGrid" class="bundle-grid" role="list"></div>
+
+        <div id="customAmountPanel" class="custom-panel hidden">
+          <label for="customAmount" class="custom-label">Vlastní počet mincí</label>
+          <div class="custom-input-row">
+            <input id="customAmount" type="number" min="1" inputmode="numeric" placeholder="Zadej počet (např. 125)" />
+            <button id="applyCustom" class="secondary-button">Použít</button>
+          </div>
+          <p class="custom-hint">Cena se vypočítá automaticky podle vybraného počtu.</p>
+        </div>
+
+        <p class="save-note">Zkus dobíjet na <a href="#" tabindex="-1">tiktok.com/coin</a> a ušetři 25 %.</p>
+      </section>
+
+      <section class="card send-card">
+        <h2 class="section-title">Poslat někomu jinému</h2>
+        <label for="sendUsername" class="muted">Uživatelské jméno</label>
+        <div class="username-row">
+          <span class="at">@</span>
+          <input id="sendUsername" type="text" placeholder="uživatelské_jméno" />
+        </div>
+        <p class="helper-text">Nech prázdné, pokud chceš dobít sobě.</p>
+      </section>
+
+      <div class="spacer"></div>
+    </main>
+
+    <footer class="footer">
+      <button id="topUpButton" class="primary-button" disabled>Dobít</button>
+    </footer>
+
+    <div id="resultModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="resultTitle">
+      <div class="modal-backdrop"></div>
+      <div class="modal-content">
+        <h3 id="resultTitle">Posláno</h3>
+        <p id="resultSub">Bude obdrženo do 5 minut.</p>
+        <div class="countdown" aria-live="polite">
+          <span id="countdownText">05:00</span>
+        </div>
+        <button id="closeModal" class="secondary-button full">Zavřít</button>
+      </div>
+    </div>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
